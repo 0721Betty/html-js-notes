@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>用户登录页面</title>
+        <style>
+            #dialog-link {
+                padding: .4em 1em .4em 20px;
+                text-decoration: none;
+                position: relative;
+            }
+        
+            #dialog-link span.ui-icon {
+                margin: 0 5px 0 0;
+                position: absolute;
+                left: .2em;
+                top: 50%;
+                margin-top: -8px;
+            }
+        </style>
+        <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.css">
+        <script src="jquery-1.12.1.js"></script>
+        <script src="jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+        <script>
+            $(function () {
+                $("#dialog").dialog({
+                    autoOpen: false,
+                    width: 400,
+                    buttons: [
+                        {
+                            text: "注册",
+                            click: function () {
+                                /*
+                                 * 1.要求注册时的账号为手机号码，密码为字母加数字不少于6位数
+                                 * 2.符合要求后注册成功然后保存数据
+                                 */
+                                // $(this).dialog("close");
+                                var regMobile = /^1[3,5,8]\d{9}$/;
+                                var regPwd =/^(?!([a-zA-Z]+|\d+)$)[a-zA-Z\d]{6,20}$/;//由数字和字母组成且不少于六位数
+                                var flag1 = $("#userNum").val().match(regMobile);
+                                var flag2 = $("#userPwd").val().match(regPwd);
+                                if(flag1&&flag2){
+                                    $(this).dialog("close");
+                                }else{
+                                    alert("您输入的账号或密码格式不对，请重新输入！");
+                                }
+                            }
+                        },
+                        {
+                            text: "登录",
+                            click: function () {
+                                $(this).dialog("close");
+                            }
+                        },
+                        {
+                            text: "取消",
+                            click: function () {
+                                $(this).dialog("close");
+                            }
+                        }
+                    ]
+                });
+                // Link to open the dialog
+                $("#dialog-link").click(function (event) {
+                    $("#dialog").dialog("open");
+                    event.preventDefault();
+                });
+            });
+            // Hover states on the static widgets
+            $("#dialog-link, #icons li").hover(
+                function () {
+                    $(this).addClass("ui-state-hover");
+                },
+                function () {
+                    $(this).removeClass("ui-state-hover");
+                }
+            );
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <h2 class="demoHeaders">登录页面</h2>
+            <p>
+                <button id="dialog-link" class="ui-button ui-corner-all ui-widget">
+                    <span class="ui-icon ui-icon-newwin"></span>登录/注册
+                </button>
+            </p>
+            <!-- ui-dialog -->
+            <div id="dialog" title="欢迎您登录">
+                <p>
+                    账号：<input type="text" value="" id="userNum" placeholder="请输入您的手机号码"><br>
+                    <p></p>
+                    密码：<input type="text" value="" id="userPwd" placeholder="由数字字母组成不少于六位"><br>
+                    <p></p>
+                    <input type="checkbox" value="1">记住密码
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

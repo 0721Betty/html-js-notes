@@ -1,0 +1,38 @@
+<!DOCTYPE htm>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>01自定义构造函数创建对象</title>
+    </head>
+    <body>
+        <script>
+            //创建一个自定义构造函数能够创建图片对象
+            function Photo(width,height,size){
+                //属性
+                this.width = width;
+                this.height = height;
+                this.size = size;
+                //方法
+                this.show = function(){
+                    console.log("宽高大小分别为："+this.width+this.height+this.size);
+                }
+            }
+            //创建一个自定义构造函数能够创建猫对象
+            function Cat(color,weight,age){
+                //属性
+                this.color = color;
+                this.weight = weight;
+                this.age = age;
+                //方法
+                this.fighting = function(){
+                    console.log("狗被我揍了一拳");
+                }
+                this.eat = function(){
+                    console.log("我抓了一只老鼠！");
+                }
+            }
+            var myphoto = new Photo(3,4,1);
+            var mycat = new Cat("白色",5,2);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>元素隐藏的不同方式</title>
+        <style>
+            div{
+                width: 200px;
+                height: 300px;
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="button" value="显示效果" id="btn">
+        <div id="dv"></div>哈哈
+        <script>
+            var dv = document.getElementById("dv");
+            var btn = document.getElementById("btn");
+            btn.onclick = function(){
+                //隐藏div 
+                //方法一不占位
+                //dv.style.display = "none";
+                //方法二占位
+                //dv.style.visibility="hidden";
+                //方法三占位
+                //dv.style.opacity = 0;
+                //方法四占位
+                dv.style.height="0px";
+                dv.style.border="0px solid red";
+            }
+        </script>
+    </body>
+</html>

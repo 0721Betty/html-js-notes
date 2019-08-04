@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>百度搜索栏案例</title>
+        <style>
+            input,.search_bar{
+                margin: 0;
+                padding: 0;
+            }
+            .search_bar{
+                margin: 50px auto;
+                width: 400px;
+                height: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="search_bar" id="box">
+            <input type="search" id="search">
+            <input type="button" value="搜索" id="btn">
+        </div>
+        <script>
+            //声明一个数组用于存放搜索可能出现的热词(真实项目中从后台获取数据,不用数组存放)
+            var keyWords = ["小红是谁","小红你好","小猫咪","小狗子","江西赣州","小孩子","江西南昌","号码","你好么"];
+            //当按键抬起时触发事件，会根据搜素框中已有的词弹出可供选择的搜索热词
+            var search = document.getElementById("search");
+            var box = document.getElementById("box");
+            search.onkeyup = function(){
+                //每一次键盘抬起都判断页面中有没有新建div，有则删除
+                if(document.getElementById("dv")){
+                    //删除一次
+                    box.removeChild(document.getElementById("dv"));
+                }
+
+                //获取文本框的输入内容
+                var text = this.value;
+                //声明一个暂时的空数组用于存放可能出现的热词
+                var tempArr = [];
+                //把文本框输入的内容和数组keyWords中的每个数据对比
+                for(var i=0;i<keyWords.length;i++){
+                    if(keyWords[i].indexOf(text)==0){//如果输入的text出现在数组keyWords里面
+                        tempArr.push(keyWords[i]);//把该热词追加到暂时存放的数组中
+                    }    
+                }
+                //临时数组有数据
+                // console.log(tempArr);
+
+                //搜索框中没有文字，或者tempArr中没有数据，那么不创建div
+                if(text.length==0||tempArr.length==0){
+                    //如果页面中有这个div，删除div
+                    if(document.getElementById("dv")){
+                        box.removeChild(document.getElementById("dv"));
+                    }
+                    return;//结束执行下面的语句，不再创建div
+                }
+                //文本框不空且临时数组中有数据时，创建一个div、放相应的热词
+                var dvObj = document.createElement("div");
+                //把div放入id为box的div中
+                box.appendChild(dvObj);
+                dvObj.id = "dv";
+                dvObj.style.width = "350px";
+                // dvObj.style.height = "100px";//不用设置高度，由里面的内容撑起该div
+                dvObj.style.border = "1px solid red";
+                //循环遍历临时数组，创建对应的p标签
+                for(var i=0;i<tempArr.length;i++){
+                    //创建p标签
+                    var pObj = document.createElement("p");
+                    //把p加入到div中
+                    dvObj.appendChild(pObj);
+                    //往p中放入tempArr中的数据
+                    pObj.innerText = tempArr[i];
+                    //为p设置高亮显示效果
+                    pObj.style.margin = 0;
+                    pObj.style.padding = 0;
+                    pObj.style.cursor = "pointer";
+                    pObj.style.marginTop = "5px";
+                    //鼠标进入事件
+                    pObj.onmouseenter = function(){
+                        this.style.backgroundColor = "pink";
+                    };
+                    //鼠标离开事件
+                    pObj.onmouseleave = function(){
+                        this.style.backgroundColor = "";
+                    };
+                }
+            }
+        </script>
+    </body>
+</html>

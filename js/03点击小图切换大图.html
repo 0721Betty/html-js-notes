@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>点击小图切换大图</title>
+    </head>
+    <body>
+        <a href="images/1.jpg"><img src="images/1small.jpg" alt=""></a>
+        <img src="" alt="" id="big">
+        <script>
+            //点击小图下面显示大图
+            //点击超链接
+            function my$(id){
+                return document.getElementById(id);
+            }
+            my$("ak").onclick=function(){
+                my$("big").src = this.href;
+                return false;
+            }
+        </script>
+    </body>
+</html>

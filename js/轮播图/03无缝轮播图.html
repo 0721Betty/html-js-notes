@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>无缝轮播图</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .box{
+                width: 790px;
+                height: 340px;
+                border: 2px solid deepskyblue;
+                /* padding: 5px; */
+                margin: 100px auto;
+                position: relative;
+                overflow: hidden;
+            }
+            ul{
+                list-style: none;
+                width: 1000%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            ul li{
+                float: left;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box" id="screen">
+            <ul>
+                <li><img src="../images/banner1.jpg" alt=""></li>
+                <li><img src="../images/banner2.jpg" alt=""></li>
+                <li><img src="../images/banner3.jpg" alt=""></li>
+                <li><img src="../images/banner4.jpg" alt=""></li>
+                <li><img src="../images/banner5.jpg" alt=""></li>
+                <li><img src="../images/banner1.jpg" alt=""></li>
+            </ul>
+        </div>
+        <script>
+            //获取装图片的screen
+            var screen = document.getElementById("screen");
+            //获取ul
+            var ulObj = screen.children[0];
+            var current = 0;//每次移动的步数
+            function f1(){
+                current -= 10; 
+                if(current<-790*6){//当前移动的步数小于所有图片加起来的宽度
+                    ulObj.style.left = 0+"px";
+                    current = 0;
+                }else{
+                    ulObj.style.left = current +"px";
+                }    
+            }
+            var timeId = setInterval(f1,2);
+            screen.onmouseover = function(){
+                clearInterval(timeId);
+            } 
+            screen.onmouseout = function(){
+                timeId = setInterval(f1,2);
+            }
+        </script>
+    </body>
+</html>

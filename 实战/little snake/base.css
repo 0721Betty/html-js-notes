@@ -1,0 +1,13 @@
+/* map的样式 */
+*{
+    margin: 0;
+    padding: 0;
+}
+.map{
+    width: 800px;
+    height: 600px;
+    background-color: #ccc;
+    /* 为蛇和食物脱离文档流 子绝父相 */
+    position: relative;
+    margin: 60px auto;
+}

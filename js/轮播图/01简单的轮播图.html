@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>简单的轮播图</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            ul{
+                list-style: none;
+            }
+            /* 清理浮动 */
+            .clearfix:after{
+                content: "";
+                display: block;
+                height: 0;
+                clear: both;
+                visibility: hidden;
+            }
+            .clearfix{
+                *zoom: 1;
+            }
+            img{
+                vertical-align: top;
+            }
+            .box{
+                width: 143px;
+                height: 185px;
+                margin: 100px auto;
+                padding: 10px;
+                border: 1px solid #ccc;
+            }
+            .inner{
+                width: 143px;
+                height: 185px;
+                overflow: hidden;
+                position: relative;
+            }
+            .inner ul{
+                width: 1000%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .inner ul li{
+                float: left;
+            }
+            .current{
+                background-color: pink;
+            }
+            .square{
+                position: absolute;
+                top: 165px;
+                right: 0;  
+            }
+            .square span{
+                display: inline-block;
+                width: 18px;
+                height: 18px;
+                line-height: 18px;
+                text-align: center;
+                font-size: 12px;  
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box" id="box">
+            <!-- 相框 -->
+            <div class="inner">
+                <ul class="clearfix" id="photo">
+                    <li><a href="#"><img src="../images/脸谱1.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="../images/脸谱2.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="../images/脸谱3.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="../images/脸谱4.jpg" alt=""></a></li>
+                </ul>
+                <div class="square">
+                    <span class="current">1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                </div>
+            </div>
+        </div>
+        <script>
+            /*
+            该轮播图是将ul绝对定位，根据span中的索引改变ul整体的left值
+            设置一个相框，相框不动，ul自身进行移动，相框中的li显示，其余li隐藏
+            */
+            var box = document.getElementById("box");
+            //找到ul对象
+            var photo = document.getElementById("photo");
+            //找到所有的span
+            var list = document.getElementsByTagName("span");
+            //遍历循环li
+            for (var i = 0; i < list.length; i++) {
+                //设置所有的span的索引值
+                list[i].setAttribute("index",i);
+                list[i].onmouseenter = function () {
+                    //清空所有li的类样式
+                    for (var j = 0; j < list.length; j++) {
+                        list[j].removeAttribute("class");
+                    }
+                    //当前的li类样式为current
+                    this.className = "current";
+                    //获取当前span的索引值
+                    var index = this.getAttribute("index");
+                    //根据当前span的索引值，决定ul的left值应该改变为相应的值
+                    photo.style.left = -143*index+"px";
+                }      
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>放大镜显示和隐藏遮挡层及大层</title>
+    </head>
+    <body>
+        <div class="box" id="box">
+            <div class="small"> <!--小层-->
+                <img src="images/1small.jpg" alt="" width="350">
+                <div class="mask"></div><!--遮挡层-->
+            </div><!--小图-->
+            <div class="big">
+                <img src="images/1.jpg" alt="">
+            </div><!--大图-->
+        </div>
+        <script>
+            //获取需要的元素
+            var box = document.getElementById("box");
+            //获取小图的div
+            var small = box.children[0];
+            //获取遮挡层
+            var mask = small.children[1];
+            //获取大图的div
+            var big = box.children[1];
+            //鼠标进入显示遮挡层和大图的div
+            box.onmouseover = function(){
+                mask.style.display = "block";
+                big.style.display = "block";
+            };
+            //鼠标离开隐藏遮挡层和大图的div
+            box.onmouseout = function(){
+                mask.style.display = "none";
+                big.style.display = "none";
+            }
+        </script>
+    </body>
+</html>

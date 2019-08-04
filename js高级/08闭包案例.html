@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <title>闭包案例</title>
+    <body>
+        
+        <script>
+            // 闭包产生三个一样的随机数
+            function f1(){
+                var num = parseInt(Math.random()*10+1);
+                return function(){
+                    console.log(num);
+                }
+            }
+            var ff = f1();
+            ff();
+            ff();
+            ff();
+            // 总结：如果想要缓存数据，就把这个数据放在外层的函数和里层的函数的中间位置
+            // 闭包的作用：缓存数据
+        </script>
+    </body>
+</html>

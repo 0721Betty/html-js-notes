@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>封装innerText和textContent</title>
+        <style>
+            div{
+                width: 200px;
+                height: 150px;
+                border: 2px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="button" value="设置值"  id="btn">
+        <div id="dv"></div>
+        <script src="common.js"></script>
+        <script>
+            //点击按钮设置div中的文本内容
+            my$("btn").onclick=function(){
+                //设置标签中间的文本内容，应该使用textContent属性
+                my$("dv").textContent="this is div 标签";
+            }
+        </script>
+    </body>
+</html>

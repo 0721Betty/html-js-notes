@@ -1,0 +1,666 @@
+/* 通用的css样式 */
+/* 版心 */
+.w{
+    width: 1190px;
+    margin: auto;
+}
+/* 左浮动 */
+.fl{
+    float: left;
+}
+/* 右浮动 */
+.fr{
+    float: right;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #f0f3ef;
+    color: #999;
+}
+li{
+    list-style: none;
+}
+/* 清除下划线 */
+a{
+    text-decoration: none;
+    color: #999;
+}
+a:hover{
+    color: #F10215;
+}
+/* 清理浮动 */
+.clearfix:after{
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix{
+    *zoom: 1;
+}
+/* 清除input标签的蓝色轮廓边框 */
+input{
+    outline: none;
+}
+/* 多用的红色 */
+.style_red{
+    color: #F10215;
+}
+/* 文字图标的样式 */
+@font-face {  /* 声明字体 */
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?8qhwk5');
+    src:  url('../fonts/icomoon.eot?8qhwk5#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?8qhwk5') format('truetype'),
+        url('../fonts/icomoon.woff?8qhwk5') format('woff'),
+        url('../fonts/icomoon.svg?8qhwk5#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    }
+/* 京东顶部样式 */
+.J_event{
+    height: 80px;
+    background-color: #000;
+}
+/* 顶部黑色背景之上放图片 该图片有链接 */
+.J_event a{
+    display: block;
+    height: 80px;
+    background-image: url("../images/header.jpg");
+    background-repeat: no-repeat;
+    position: relative;
+}
+/* 顶部小×号的样式 居右 */
+.J_event a i{
+    width: 20px;
+    height: 20px;
+    font-family: "icomoon";
+    font-size: 20px;
+    font-style: normal;
+    /* text-align: center; */
+    line-height: 20px;
+    color:#666;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    background: rgba(0,0,0,0.3);
+}
+/* ***************************************************************************************** */
+
+/* 快捷导航栏样式 */
+.shortcut{
+    height: 30px;
+    line-height: 30px;
+    background-color: #E3E4E5;
+    border-bottom: 1px solid #DDDDDD;
+    font-size:12px;
+    color: #999;
+}
+.fr li{
+    float: left;
+}
+.fr a{
+    color: #999;
+}
+.fr li a:hover{
+    color: #F10215;
+}
+.fr i{
+    font-family: "icomoon";
+    font-size: 12px;
+    font-style: normal;
+}
+.fl ul{
+    margin-left: 200px;
+}
+.fl i{
+    font-family: "icomoon";
+    color: red;
+    font-style: normal;
+    font-size: 14px;
+}
+.spacer{
+    width: 1px;
+    height: 10px;
+    background-color: #cccccc;
+    margin: 10px 10px 0;
+}
+.fr li .erweima{
+    width: 60px;
+    height: 60px;
+    border: 1px solid #ccc;
+    padding: 3px;
+    position: absolute;
+    right: 0px;
+    top:30px;
+}
+/* ************************************************************************************* */
+
+/* 搜索栏的样式 */
+.Search_bar{
+    height: 140px;
+    background-color: #F6F6F6;
+}
+h1{
+    margin: 0;
+    padding: 0;
+}
+.Search_bar .inner{
+    position: relative;
+}
+.logo a{
+    width: 190px;
+    height: 170px;
+    background:url("../images/jddog.png") no-repeat;
+    position: absolute;
+    top:-30px;
+    left:0;
+    cursor: pointer;
+    /* 隐藏京东二字 */
+    text-indent: -2em;
+    overflow: hidden;
+}
+.inner .search{
+    /* background-color: pink; */
+    position: absolute;
+    left: 320px;
+    top:20px;
+}
+.search input{
+    width: 500px;
+    height: 35px;
+    border: 1px solid #F10215;
+    padding-left: 5px;
+}
+.search button{
+    width: 50px;
+    height: 35px;
+    border: 1px solid #F10215;
+    background-color: #F10215;
+    vertical-align: top;
+}
+.search button i{
+    font-family: "icomoon";
+    font-style: normal;
+    font-size:20px ;
+}
+/* 相机小图标 */
+.search em{
+    background:url("../images/sprite-search.png") no-repeat;
+    width: 20px;
+    height: 15px;
+    position: absolute;
+    top: 10px;
+    right: 65px;
+}
+/* 热词模块 */
+.keyword{
+    position: absolute;
+    left: 320px;
+    top:70px;
+    width: 500px;
+    height: 18px;
+    overflow: hidden;
+}
+.keyword li{
+    display: inline-block;
+    font-size: 12px;
+}
+.keyword a{
+    color: #999;
+}
+.keyword a:hover{
+    color: #F10215;
+    cursor: pointer;
+}
+/* 文字导航栏链接 */
+.text_nav{
+    position: absolute;
+    left: 200px;
+    top: 100px;
+    width: 790px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+.text_nav li{
+    display: inline-block;
+    margin: 0 8px;
+}
+.text_nav a{
+    color: #666;
+    font-size: 16px;
+}
+.text_nav a:hover{
+    color: #F10215;
+}
+/* 购物车模块 */
+.shop{
+    width: 188px;
+    height: 33px;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 25px;
+    right: 100px;
+    text-align: center;
+	line-height: 33px;
+}
+.shop i{
+    font-family: "icomoon";
+    font-style: normal;
+    font-size: 16px;
+    margin-right: 3px;
+}
+.shop a{
+    font-size:12px;
+    cursor: pointer;
+}
+.shop s{
+    text-decoration: none;
+    position: absolute;
+    top: 5px;
+    left: 140px;
+    height: 16px;
+    line-height: 16px;
+    display: inline-block;
+    background-color: #F10215;
+    font-size: 12px;
+    color: #fff;
+    border-radius: 7px;
+}
+/* 电脑图片 */
+.computer a{
+    width: 190px;
+    height: 40px;
+    background: url("../images/computer.jpg") no-repeat;
+    position: absolute;
+    right: 0px;
+    top:100px;
+}
+/* ******************************************************************* */
+
+
+/* 头部样式 */
+.head{
+    height: 480px;
+    /* 头部给了高 */
+    position: relative;
+}
+/* 左侧文字导航链接样式 */
+.wrapper .left{
+    width: 190px;
+    height: 480px;
+    background-color:#6E6568;
+    float: left;
+}
+.left li{
+    width: 172px;
+    height: 26px;
+    line-height: 26px;
+    padding-left: 18px;
+}
+.left ul{
+    padding: 6px 0;
+}
+.left li a{
+    color: #ECFFFF;
+    font-size: 14px;
+}
+/* 中间的样式 */
+.middle{
+    width: 810px;
+    height: 480px;
+    /* background-color: skyblue; */
+    float: left;
+}
+/* banner图片样式 */
+.first ul li{
+    display: none;
+    width: 790px;
+    height: 340px;
+    margin: 0 auto;
+}
+.first .selected{
+    display: block;
+}
+/*banner里面左边绝对定位小箭头的样式  */
+.first .jl{
+    display: block;
+    width: 28px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    background:rgba(0, 0, 0, 0.3);
+    font-family: "icomoon";
+    font-style: normal;
+    font-size: 20px;
+    position: absolute;
+    top: 160px;
+    left: 9px;
+}
+/* banner里面右边绝对定位小箭头的样式 */
+.first .jr{
+    display: block;
+    width: 28px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    background:rgba(0, 0, 0, 0.3);
+    font-family: "icomoon";
+    font-style: normal;
+    font-size: 20px;
+    position: absolute;
+    top: 160px;
+    left: 772px;
+}
+/* banner里面小圆圈的样式 */
+.first ol{
+    position:absolute;
+    top:305px;
+    right: 328px;
+    width: 180px;
+    height: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255,255, 0.3);
+}
+.first ol li{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin: 4px 3px;
+    cursor: pointer;
+}
+.first .current{
+    background-color: #F10215;
+}
+/* 中间下面两张图片 */
+.bottom img{
+    width: 390px;
+    height: 130px;
+    display: inline-block;
+}
+.bottom{
+    /* 给bottom父元素宽高 保证其子元素img的左右浮动不影响别人 */
+    width: 790px;
+    height: 130px;
+    background-color: pink;
+    /* 上  左右  下的外边距 */
+    margin:10px 10px 0;
+}
+/* 右侧登录及广告样式 */
+.left{
+    width: 190px;
+    height: 480px;
+    background-color:pink;
+    float: left;
+}
+/* 右侧居上方的盒子 */
+.left .shang{
+    height: 150px;
+    text-align: center;
+}
+.shang img{
+    width: 55px;
+    height: 55px;
+}
+.shang .user{
+    margin-bottom: 12px;
+}
+.shang .user p{
+    font-size: 12px;
+    line-height: 19px;
+}
+.shang .user_vip a{
+    display: inline-block;
+    font-size: 12px;
+    width: 70px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 10px;
+}
+/* 右侧居中间的盒子 */
+.left .zhong{
+    height: 130px;
+}
+/* 右侧居下方的盒子 */
+.left .xia{
+    height: 210px;
+}
+
+
+/* 左右双12广告翅膀 */
+.head .wing{
+    position: absolute;
+    top: 0px;
+    right: -170px;
+}
+/* *************************************************************************************** */
+
+
+/* 尾部样式 */
+/* 第一个盒子 */
+.footer_one{
+    height: 43px;
+    padding: 30px 0;
+    position: relative;
+}
+.footer_one li{
+    width: 297px;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    float: left;
+    color: #000;
+    font-size: 18px;
+}
+.footer_one span{
+    width: 36px;
+    height: 42px;
+    display: inline-block;
+    background:url("../images/ico_service.png") no-repeat;
+}
+.tu1{
+    position: absolute;
+    top:30px;
+    left: 0px;
+    background-position: 0px 0px;
+}
+.tu2{
+    position: absolute;
+    top:30px;
+    left:297px; 
+    background-position: 0 -42px;
+}
+.tu3{
+    position: absolute;
+    top:30px;
+    left:594px; 
+    background-position: 0 -85px;
+}
+.tu4{
+    position: absolute;
+    top:30px;
+    left:891px; 
+    background-position: 0 -129px;
+} 
+.footer_one_bottombd{
+    border-bottom: 1px solid #999;
+}
+/* 第二个盒子 */
+.footer_two{
+    height:160px;
+    padding: 20px 0;
+    position: relative;
+}
+.help_nav{
+    width: 198px;
+    height: 137px;
+    float: left;
+}
+.help_nav li{
+    width: 198px;
+    height: 22px;
+    float: left;
+}
+.help_nav li a{
+    font-size: 12px;
+    color: #999;
+}
+.help_nav h5{
+    height: 22px;
+    font-size: 14px;
+    color: #666;
+    /* margin-bottom: 5px; */
+}
+.help_cover{
+    width: 200px;
+    height: 150px;
+    background: url("../images/sprite.footer.png") no-repeat;
+    position: absolute;
+    top: 19px;
+    right: 0px;
+}
+.help_cover p{
+    font-size: 13px;
+    margin-top: 15px;
+    color: #999;
+    line-height: 20px;
+}
+.help_cover a{
+    font-size: 12px;
+    color: #999;
+    margin-right: 0;
+    margin-left: 144px;
+    position: relative;
+}
+.help_cover a:hover{
+    color: #F10215;
+}
+.help_cover a i{
+    font-family: "icomoon";
+    font-style: normal;
+    font-size: 12px;
+    position: absolute;
+    top:3px;
+    right: -8px;
+}
+/* 第三个盒子 */
+.footer_three{
+    border-top: 1px solid #999;
+    height: 234px;
+    padding: 15px 0;
+}
+.footer_three p{
+    font-size: 12px;
+    color: #666;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+}
+.footer_three .a_spacing{
+    margin:0 8px;
+}
+.footer_three .last{
+    height: 110px;
+    padding: 10px 0;
+}
+.last span{
+    color: #999;
+}
+.last .flag a{
+    display: inline-block;
+    margin: 0 4px;
+}
+.last .flag s{
+    width: 15px;
+    height: 12px;
+    display: inline-block;
+    background: url("../images/sprite.footer.png") no-repeat; 
+}
+.last .flag .flag1{
+    background-position: -106px -155px;
+    position: relative;
+    top:1px;
+    left:-6px;
+}
+.last .flag .flag2{
+    background-position: -168px -155px;
+    position: relative;
+    top:2px;
+    left:-5px; 
+}
+.last .flag .flag3{
+    background-position: -148px -155px;
+    position: relative;
+    top:2px;
+    left:-5px; 
+}
+.last .flag .flag4{
+    background-position: -128px -155px;
+    position: relative;
+    top:2px;
+    left:-5px; 
+}
+.last .flag .flag5{
+    background-position: -108px -171px;
+    position: relative;
+    top:2px;
+    left:-5px; 
+}
+.last p{
+    height: 18px;
+    line-height: 18px;
+    margin: 4px 0;
+}
+.tupian {
+    height: 36px;
+    margin-top: 10px;
+    position: relative;
+    /* background-color: pink; */
+}
+.tupian li{
+    width: 103px;
+    height: 32px;
+    line-height: 1000px;
+    text-align: center;
+	display: inline-block;
+	background: url("../images/sprite.footer.png") no-repeat;
+}
+.tupian  .tu1 {
+    position: absolute;
+    top: 4px;
+    right: 0px;
+	background-position: -204px 0px;
+}
+.tupian .tu2 {
+    position: absolute;
+    top: 4px;
+    right: 0px;
+	background-position: -204px -36px;
+}
+.tupian .tu3 {
+    position: absolute;
+    top: 4px;
+    right: 0px;
+	background-position: -204px -72px;
+}
+.tupian .tu4 {
+    position: absolute;
+    top: 4px;
+    right: 0px;
+	background-position: -204px -108px;
+}
+.tupian .tu5 {
+    position: absolute;
+    top: 4px;
+    right: 0px;
+	background-position: -204px -144px;
+}

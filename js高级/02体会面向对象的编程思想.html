@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <title>体会面向对象的编程思想</title>
+    <body>
+        <input type="button" value="显示效果" id="btn">
+        <div id="dv"></div>
+        <script>
+            //获取按钮对象
+            var btn = document.getElementById("btn");
+            //获取div对象
+            var dv = document.getElementById("dv");
+            //构造函数
+            function ChangeStyle(btnObj,dvObj,json){
+                this.btnObj = btnObj;
+                this.dvObj = dvObj;
+                this.json = json;
+                // console.log(this);//this是ChangeStyle
+            }
+            //原型方法
+            ChangeStyle.prototype.init = function(){
+                //点击按钮改变div的多个样式的属性值
+                var that = this;
+                // console.log(that);//that是ChangeStyle
+                this.btnObj.onclick = function(){//按钮
+                    for(var key in that.json){
+                        that.dvObj.style[key] = that.json[key];
+                    }
+                };
+            };
+            //实例化对象
+            var json = {"width":"500px","height":"200px","backgroundColor":"blue","opacity":"0.2"};
+            var cs = new ChangeStyle(btn,dv,json);
+            cs.init();//调用方法
+        </script>
+    </body>
+</html>

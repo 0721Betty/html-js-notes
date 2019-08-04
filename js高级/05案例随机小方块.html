@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <title>随机小方块</title>
+    <style>
+        .map{
+            width: 800px;
+            height: 600px;
+            background-color: #ccc;
+            /* 父级元素相对定位，方便子集元素即小方块绝对定位脱离文档流 */
+            position: relative;
+        }
+    </style>
+    <body>
+        <div class="map"></div>
+        <script>
+            //产生随机对象的
+            //自调用函数产生随机数，分号一定要加上
+            (function(window){
+                //产生随机数的构造函数
+                function Random(){
+
+                }
+                Random.prototype.getRandom = function(min,max){
+                    return Math.floor(Math.random()*(max-min)+min);
+                }
+                //把一个产生随机数的Random对象暴露给window对象成为了全局对象，所以外部可以直接使用这个对象了
+                window.Random = new Random();
+            })(window);
+            //console.log(Random.getRandom(0,5));
+            
+            //产生小方块对象的
+            (function(window){
+                //console.log(Random.getRandom(0,5));
+                //选择器的方式来获取元素的对象
+                var map = document.querySelector(".map");
+
+                //食物的构造函数
+                function Food(width,height,color){
+                    //this均为实例对象
+                    this.width = width||20;//默认小方块的宽20
+                    this.height = height||20;//默认小方块的高20
+                    
+                    //横坐标，纵坐标
+                    this.x = 0;//先默认为0，后面随机产生
+                    this.y = 0;
+                    this.color = color;//小方块的背景颜色
+                    this.element = document.createElement("div");//小方块的元素
+                };
+                //初始化小方块的显示的效果及位置---显示地图上
+                Food.prototype.init = function(map){
+                    //设置小方块的样式
+                    var div = this.element;
+                    div.style.position = "absolute";//脱离文档流
+                    div.style.width = this.width+"px";
+                    div.style.height = this.height+"px";
+                    div.style.backgroundColor = this.color;
+                    //把小方块加到map地图中
+                    map.appendChild(div);
+                    this.render();
+                };
+                //产生随机位置 render：使成为使变为，使处于某状态; 给予; 提供; 回报; 递交; 呈献; 提交;
+
+                Food.prototype.render=function(){
+                    //随机产生横纵坐标
+                    var x = Random.getRandom(0,map.offsetWidth/this.width)*this.width;
+                    var y = Random.getRandom(0,map.offsetHeight/this.height)*this.height;
+                    this.x = x;
+                    this.y = y;
+                    var div = this.element;
+                    div.style.left = this.x+"px";
+                    div.style.top = this.y+"px";
+                };
+                //实例化对象
+                var fd = new Food(20,20,"green");
+                fd.init(map);
+            })(window);
+        </script>
+    </body>
+</html>

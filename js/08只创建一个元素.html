@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>只创建一个元素</title>
+        <style>
+            div{
+                width: 200px;
+                height: 300px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="button" value="创建一个元素" id="btn">
+        <div id="dv"></div>
+        <script>
+            //有则删除，无则创建
+            var btn = document.getElementById("btn");
+            var dv = document.getElementById("dv");
+            //方法一
+            // btn.onclick = function () {
+            //     //判断div中有没有这个按钮，有就删除
+            //     if (document.getElementById("btn2")) {
+            //         //如果为true就有，删除
+            //         dv.removeChild(document.getElementById("btn2"));
+            //     }
+            //     var obj = document.createElement("input");
+            //     obj.type = "button";
+            //     obj.value = "按钮";
+            //     obj.id = "btn2";
+            //     dv.appendChild(obj);
+            // }
+            //方法二
+            btn.onclick = function () {
+                //没有才创建
+                if (!document.getElementById("btn2")){
+                    var obj = document.createElement("input");
+                    obj.type = "button";
+                    obj.value = "按钮";
+                    obj.id = "btn2";
+                    dv.appendChild(obj);
+                }
+            }
+        </script>
+    </body>
+</html>

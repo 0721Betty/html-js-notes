@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>原型添加方法解决数据共享</title>
+    </head>
+    <body>
+        <script>
+            //构造函数
+            function Person(name,age){
+                this.name = name;
+                this.age = age;
+                this.play = function(){
+                    console.log("玩游戏");
+                }
+            }
+            //构造函数里面的方法，每创建一个对象，构造函数里面的方法都被分配一个空间，不被共享，不是同一个方法
+            //通过原型来添加方法，解决数据共享，节省内存空间
+            Person.prototype.eat = function(){
+                console.log("吃红烧肉");
+            }
+            var p1 = new Person("小明",20);
+            var p2 = new Person("小红",18);
+            console.log(p1.eat==p2.eat);//true,是同一个方法
+            console.log(p1.play==p2.play);//false，不是同一个方法
+        </script>
+    </body>
+</html>

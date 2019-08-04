@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <title>小贪吃蛇</title>
+    <link rel="stylesheet" href="base.css">
+    <body>
+        
+        <!-- 蛇和食物出现的地图 -->
+        <div class="map"></div>
+        <script src="food.js"></script>
+        <script src="snake.js"></script>
+        <script src="game.js"></script>
+        <script>
+            var map = document.querySelector(".map");
+            // 初始化游戏对象
+            var gm = new Game(map);
+            // 初始化游戏，开始游戏
+            gm.init();
+        </script>
+    </body>
+</html>

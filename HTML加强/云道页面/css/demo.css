@@ -1,0 +1,73 @@
+/* 清除默认内外边距 */
+*{
+    padding: 0;
+    margin: 0;
+}
+/* header里面的样式 */
+li{
+    list-style: none;
+}
+.header .nav a{
+    text-decoration: none;
+    color: #525252;
+}
+.nav a:hover{
+    color: #90C3FA;
+}
+.header{
+    height: 100px;
+    background-color: #fff;
+}
+.header .inner{
+    width: 1212px;
+    height: 100px;
+    margin: 0 auto;
+    /* background-color: pink; */
+    line-height: 100px;
+}
+.header .inner .logo{
+    float: left;
+    margin-top: 15px;
+}
+.header .inner .nav{
+    float: right;
+}
+.header .inner .nav li{
+    float: left;
+    margin: 0 20px;
+}
+/* banner里面的样式 */
+.banner{
+    height: 624px;
+    background-image: url("../images/banner.jpg");
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+.service{
+    width: 1055px;
+    height: 680px;
+    background-color: pink;
+    margin: 0 auto;
+}
+.service .head{
+    border-top: 1px solid silver;
+    width: 1005px;
+    margin: 74px auto 0;
+}
+.service h3{
+    width: 167px;
+    height: 46px;
+    margin: -15px auto 0;
+}
+.service p{
+    width: 848px;
+    height: 111px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin: 15px auto 0;
+}
+.service-body{
+    width: 320px;
+    height: 510px;
+}

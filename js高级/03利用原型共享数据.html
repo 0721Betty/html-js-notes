@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <title>利用原型共享数据</title>
+    <body>
+        <script>
+            //所有需要共享的数据(属性或者方法)放在原型中
+            //所有不需要共享的数据放在构造函数中
+            //构造函数 
+            function Student(name,age,sex){
+                this.name = name;
+                this.age = age;
+                this.sex = sex;
+            }
+            //简单的原型写法
+            Student.prototype = {
+                //必须要手动修改构造器的指向
+                constructor:Student,
+                height:"188",
+                weight:"55kg",
+                study:function(){
+                    console.log("敲代码");
+                },
+                eat:function(){
+                    console.log("吃饭");
+                }
+            };
+
+            //所有学生的身高均为188
+            //Student.prototype.height = "188";
+            //所有学生的体重均为55kg
+            // Student.prototype.weight = "55kg";
+            // Student.prototype.study = function(){
+            //     console.log("写代码");
+            // }
+            // Student.prototype.eat = function(){
+            //     console.log("吃饭");
+            // }
+            // 实例化对象并且初始化，初始化即给该对象传值
+            var stu = new Student("小白",16,"男");
+            console.log(Student);
+            stu.eat();
+            stu.study();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>左右焦点轮播图</title>
+        <link rel="stylesheet" href="../base.css">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            /* 清理浮动 */
+            .clearfix:after{
+                content: "";
+                display: block;
+                height: 0;
+                clear: both;
+                visibility: hidden;
+            }
+            .clearfix{
+                *zoom: 1;
+            }
+            img{
+                vertical-align: top;
+            }
+            span{
+                font-family: "icomoon";
+                background-color: rgba(0, 0, 0, 0.3);
+                font-size: 18px;
+                width: 25px;
+                height: 25px;
+                line-height: 25px;
+                text-align: center;
+                display: inline-block;
+            }
+            ul{
+                list-style: none;
+            }
+            .wrapper{
+                width: 790px;
+                height: 340px;
+                margin: 100px auto;
+                padding: 5px;
+                overflow: hidden;
+                border: 1px solid #ccc;
+            }
+            .inner{
+                width: 1000%;
+                position: relative;
+            }
+            .inner ul{
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .inner ul li{
+                display: inline-block;
+            }
+            .arrowhead{
+                position: relative;
+                z-index: 666;
+                cursor: pointer;
+            }
+            .left{
+                position: absolute;
+                top: 166px;
+                left: 0px;    
+            }
+            .right{
+                position: absolute;
+                top: 166px;
+                right: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box" class="wrapper">
+            <div class="inner clearfix">
+                <!-- 相框 -->
+                <ul id="photo">
+                    <li><a href="#"><img src="../images/banner1.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="../images/banner2.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="../images/banner3.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="../images/banner4.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="../images/banner5.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="../images/banner6.jpg" alt=""></a></li>
+                </ul>
+            </div>
+            <div class="arrowhead" id="jiantou">
+                <span class="left" id="left"></span>
+                <span class="right" id="right"></span>
+            </div>
+        </div>
+        <script>
+            //动画函数---任意一个元素移动到指定的目标位置
+            function animate(element, target) {
+                //先清理定时器,保证点击按钮只产生一个定时器
+                clearInterval(element.timeId);
+                element.timeId = setInterval(function () {
+                    //获取元素的当前的位置
+                    var current = element.offsetLeft;//数字类型没有单位px
+                    //元素每次移动多少像素---步数
+                    var step = 10;
+                    //当前位置小于目标位置则走正数，反之走负数即往相反的方向走
+                    step = current < target ? step : -step;
+                    //每次移动后的距离，即当前移动到的位置
+                    current += step;
+                    //判断当前移动的位置是否到达目标位置
+                    if (Math.abs(target - current) > Math.abs(step)) {
+                        element.style.left = current + "px";
+                    } else {
+                        //清理定时器
+                        clearInterval(element.timeId);
+                        //说明马上到达目标，就直接到达目标因为当target与step直接不是除数和被除数的关系则总是接近target而到不了
+                        element.style.left = target + "px";
+                    }
+                }, 10);
+            }
+            //获取box
+            var box = document.getElementById("box");
+            //获取所有的li标签
+            var list = document.getElementsByTagName("li");
+            //获取存放图片的ul
+            var ul = document.getElementById("photo");
+            // console.log(document.querySelector("ul"));
+            //获取箭头的div
+            var jiantou = document.getElementById("jiantou");
+            //获取左箭头
+            var lt = document.getElementById("left");
+            //获取右箭头
+            var rt = document.getElementById("right");
+            //获取图片img标签
+            var imgs = document.getElementsByTagName("img");
+            //点击左右箭头改变图片移动的距离 动画函数实现
+            //鼠标移动到box中显示箭头，反之隐藏
+            box.onmouseover = function(){
+                jiantou.style.display = "block";    
+            }
+            box.onmouseout = function(){
+                jiantou.style.display = "none";
+            }
+            //点击右箭头图片往右移动
+            var index = 0;//用于记录箭头被点击的次数,根据点击的次数决定ul移动的距离
+            rt.onclick = function(){
+                //获取list的长度
+                var len = list.length;
+                if(index<len-1){
+                    //当index<图片个数减一时，每点击一次，index++
+                    index++;
+                    animate(ul,-index*795);
+                }
+            }
+            //点击左箭头图片往右移动
+            lt.onclick = function(){
+                if(index>0){
+                    //当index>0时，每点击一次，index--
+                    index--;
+                    animate(ul,-index*795);
+                }
+            }   
+        </script>
+    </body>
+</html>

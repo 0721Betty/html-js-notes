@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>动态创建列表</title>
+        <style>
+            div{
+                width: 200px;
+                height: 400px;
+                background-color: pink;
+            }
+            ul{
+                list-style-type: none;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="button" value="动态创建列表" id="btn">
+        <div id="dv"></div>
+        <script>
+            //点击按钮为div中添加列表
+            //点击按钮事件
+            var dv = document.getElementById("dv");
+            var btn = document.getElementById("btn");
+            var names = ["苹果","香蕉","梨子","桃子","菠萝","西瓜","葡萄","芒果"];
+            btn.onclick=function(){
+                var str="<ul>";
+                //根据循环创建对应的数的li
+                for(var i=0;i<names.length;i++){
+                    str+="<li>"+names[i]+"</li>";
+                }
+                str+="</ul>";
+                dv.innerHTML = str;
+                //代码执行到这里，li已经有了 为li添加高亮显示效果
+                //鼠标进入时背景颜色为绿色，鼠标离开时恢复原来的颜色
+                //先找到所有的li标签
+                var list = dv.getElementsByTagName("li");
+                //循环遍历li添加鼠标进入事件和鼠标离开事件
+                for(var j=0;j<list.length;j++){
+                    //鼠标进入
+                    list[j].onmouseenter = function(){
+                        this.style.backgroundColor = "green";
+                    }
+                    //鼠标离开
+                    list[j].onmouseleave = function(){
+                        this.style.backgroundColor = "";
+                    }
+                }
+            };
+        </script>
+    </body>
+</html>

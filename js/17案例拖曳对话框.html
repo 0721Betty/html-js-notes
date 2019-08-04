@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>拖曳对话框</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            a{
+                text-decoration: none;
+                color: black;
+            }
+            .login-header{
+                width: 300px;
+                height: 30px;
+                margin: 30px auto;
+                font-size: 18px;
+                font-weight: bold;
+                text-align: center;
+            }
+            .login{
+                width: 300px;
+                height: 220px;
+                background-color: #ccc;
+                margin: 50px auto;
+                text-align: center;
+                display: none;
+                cursor: move;
+            }
+            .close-login{
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: azure;
+                text-align: center;
+                line-height: 40px;
+                position: absolute;
+                right: -20px;
+                top: -20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="login-header"><a id="link" href="javascript:void(0);">点击，弹出登录框</a></div>
+        <!-- 登录框 -->
+        <div id="login" class="login">
+            <div id="login-title" class="login-title" style="position:relative;">登录会员
+                <span><a id="closeBtn" href="javascript:void(0);" class="close-login">关闭</a></span>
+            </div>
+            <div class="login-input-content">
+                <div class="login-input">
+                    <label for="">用户名：</label>
+                    <input type="text" placeholder="请输入用户名" name="info[username]" id="username" class="list-input">
+                </div>
+                <div class="login-input">
+                    <label for="">登录密码：</label>
+                    <input type="text" placeholder="请输入登录密码" name="info[password]" id="password">
+                </div>
+                    <button>登录会员</button>
+                
+            </div>
+        </div>
+        <!-- 遮挡层 -->
+        <div id="bg" class="login-bg"></div>
+        <!-- <script>
+            //点击超链接弹出登录框，点击页面的任何位置都可以关闭登录框
+            var link = document.getElementById("link");
+            var login = document.getElementById("login");
+            link.onclick = function(e){
+                login.style.display = "block";
+                // return false;
+                // e.preventDefault();
+                //上面的两个是阻止默认事件
+                //阻止事件冒泡
+                e.stopPropagation();
+                //window.event.cancelBubble = true;
+            }
+            document.onclick = function(){
+                login.style.display="none";
+            }
+        </script> -->
+
+        <script>
+            //获取超链接，注册点击事件，显示登录框和遮挡层
+            var link = document.getElementById("link");
+            var login = document.getElementById("login");
+            var bg = document.getElementById("bg");
+            var closeBtn = document.getElementById("closeBtn");
+            var title = document.getElementById("title");
+            link.onclick = function(){
+                login.style.display = "block";
+                bg.style.display = "block";
+            };
+        
+            //获取关闭，注册点击事件，隐藏登录框和遮挡层
+            closeBtn.onclick = function(){
+                login.style.display = "none";
+                bg.style.display = "none";
+            };
+            //按下鼠标，移动鼠标，移动登录框
+            title.onmousedown = function(e){
+                //获取此时可视区域的横坐标-此时登录框距离左侧页面的横坐标
+                var spaceX = e.clientX - login.offsetLeft;
+                var spaceY = e.clientY - login.offsetTop;
+                //移动的事件
+                document.onmousemove=function(e){
+                    //新的可视区域的横坐标-spaceX===>新的值--->登录框的left属性
+                    var x = e.clientX - spaceX;
+                    var y = e.clientY - spaceY;
+                    login.style.left = x + "px";
+                    login.style.top = y + "px";
+                }
+            };
+        </script>
+    </body>
+</html>
